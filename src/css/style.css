@@ -1,0 +1,16 @@
+#reset {
+    display: none;
+}
+
+#grid {
+    background-color: white;
+}
+
+.cell {
+    margin: 0px;
+    padding: 0px;
+    width: 2px;
+    height: 2px;
+    float: left;
+    background-color: black;
+}

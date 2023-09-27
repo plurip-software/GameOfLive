@@ -1,0 +1,10 @@
+{
+  "name": "gameoflive",
+  "version": "3140",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PluRip Lambda 2023",
+  "license": "ISC"
+}
