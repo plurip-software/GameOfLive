@@ -26,7 +26,7 @@ xcopy /s ..\src\imgs\ imgs\ /i /d /y /e
 
 @REM Minify Index And Bundle Dependencies 
 @REM Then Into Dist Folder
-CALL uglifyjs js\imports\* js\index.js -c -m -o index.min.js
+CALL uglifyjs ..\src\js\imports\* ..\src\js\index.js -c -m -o index.min.js
 
 @REM Minify CSS Then Into Dist
 CALL uglifycss css\style.css --output style.min.css
