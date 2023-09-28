@@ -3,20 +3,8 @@
 @REM Clear The Screen
 cls
 
-@REM @REM Get Project Name From package.json
-@REM findstr /c:"name" package.json > tmpFile 
-@REM set /p VERS_KEY_VAL= < tmpFile 
-@REM del tmpFile
-@REM SET NAME=%VERS_KEY_VAL:~14,5%
-
-@REM @REM Load Current Version Number From package.json
-@REM findstr /c:"version" package.json > tmpFile 
-@REM set /p VERS_KEY_VAL= < tmpFile 
-@REM del tmpFile
-@REM SET VERSION=%VERS_KEY_VAL:~14,5%
-
+@REM Extract Project Name And Version From 'package.json' 
 for /f "tokens=2 delims=:, " %%a in ('findstr /C:"name" "package.json"') do set "NAME=%%~a"
-
 for /f "tokens=2 delims=:, " %%a in ('findstr /C:"version" "package.json"') do set "VERSION=%%~a"
 
 @REM Compose Versioned Folder Name  
