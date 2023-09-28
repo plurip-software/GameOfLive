@@ -8,13 +8,13 @@ for /f "tokens=2 delims=:, " %%a in ('findstr /C:"name" "package.json"') do set 
 for /f "tokens=2 delims=:, " %%a in ('findstr /C:"version" "package.json"') do set "VERSION=%%~a"
 
 @REM Compose Versioned Folder Name  
-SET VERSIONED_FOLDER="%NAME%-%VERSION%"
+SET VERSIONED_FOLDER=%NAME%-%VERSION%
 
 @REM Create Dist Folder And The Inner Folder Struture
 mkdir dist
 
 @REM Set Variable To Path Of Versioned Folder
-SET PATH_VERSIONED_FOLDER=dist\\%VERSIONED_FOLDER%
+SET PATH_VERSIONED_FOLDER=dist\%VERSIONED_FOLDER%
 
 @REM Create Versioned Folder + File Structure  
 mkdir %PATH_VERSIONED_FOLDER%
