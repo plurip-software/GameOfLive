@@ -131,9 +131,7 @@ function nextState () {
     grid.draw()
 }
 
-
 // EVENTS
 //
-$("#startOrNext").on("click", nextState)
 
 setInterval(nextState, 1000)
