@@ -16,22 +16,23 @@ mkdir dist
 @REM Set Variable To Path Of Versioned Folder
 SET PATH_VERSIONED_FOLDER=dist\%VERSIONED_FOLDER%
 
+cd %PATH_VERSIONED_FOLDER%
+
 @REM Create Versioned Folder + File Structure  
-mkdir %PATH_VERSIONED_FOLDER%
-mkdir %PATH_VERSIONED_FOLDER%\imgs
+mkdir imgs
 
 @REM Copy Images Into Dist
-xcopy /s src\imgs\ %PATH_VERSIONED_FOLDER%\imgs\ /i /d /y /e 
+xcopy /s ..\src\imgs\ imgs\ /i /d /y /e 
 
 @REM Minify Index And Bundle Dependencies 
 @REM Then Into Dist Folder
-CALL uglifyjs src\js\imports\* src\js\index.js -c -m -o %PATH_VERSIONED_FOLDER%\index.min.js
+CALL uglifyjs js\imports\* js\index.js -c -m -o index.min.js
 
 @REM Minify CSS Then Into Dist
-CALL uglifycss src\css\style.css --output %PATH_VERSIONED_FOLDER%\style.min.css
+CALL uglifycss css\style.css --output style.min.css
 
 @REM Copy Index HTML File Into Dist
-copy src\index.html %PATH_VERSIONED_FOLDER%\index.html /y 
+copy ..\..\index.html index.html /y 
 
 @REM Run Website
-start brave file:///C:/Users/sinan/Documents/Projects/Programming/JavaScript/GameOfLive/%PATH_VERSIONED_FOLDER%/index.html
+start brave index.html
