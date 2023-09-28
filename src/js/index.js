@@ -75,8 +75,6 @@ class Grid {
         $("#grid")
             .css("height", this.rows * 2 + "px")
             .css("width", this.cols * 2 + "px")
-            .empty()
-            .append(gridHTML)
 
         return gridHTML
     }
