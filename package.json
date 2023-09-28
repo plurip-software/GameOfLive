@@ -1,10 +1,16 @@
 {
   "name": "gameoflive",
-  "version": "3140",
+  "version": "3.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "PluRip Lambda 2023",
-  "license": "ISC"
+  "author": "PluRip-Lambda-2023",
+  "license": "MIT",
+  "devDependencies": {
+    "derequire": "^2.1.1",
+    "duplexer": "^0.1.2",
+    "folderify": "^1.2.1",
+    "include-folder": "^1.0.0"
+  }
 }

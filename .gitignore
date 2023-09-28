@@ -1,5 +1,4 @@
-/dist/*
+dist
 .vscode
 node_modules
-src/css/*.min.css
-src/js/*.min.js
+src/js/imports
