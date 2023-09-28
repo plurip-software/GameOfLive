@@ -10,12 +10,11 @@ class Grid {
                 
     }
     init(rows, cols) {
-        const grid = 
-            [..."0".repeat(rows)]
+        return [
+            ..."0".repeat(rows)]
             .map(
                 () => [..."0".repeat(cols)].map(() => new Cell())
-            )
-        return grid
+            )  
     }
     map2D(f) {
         return new Grid(this.rows, this.cols
@@ -62,10 +61,11 @@ class Grid {
                 (position, cell) => new Cell(position in positions, cell.age + 1)
             )
     }
-    transition() {
+    transition(randomness = RandomEventPer.Ik) {
         return this
             .map2D(
-                ({ row, col }, cell) => cell.transition(this.neighbors(row, col), 0.001)
+                ({ row, col }, cell) => 
+                cell.transition(this.neighbors(row, col), randomness)
             )
     }
     draw() {
@@ -82,12 +82,22 @@ class Grid {
     }
 }
 
+const RandomEventPer =      
+    {I    : 0
+    ,Io   : 1       
+    ,IO0  : 2
+    ,Ik   : 3
+    ,Iok  : 4
+    ,IO0k : 5
+    ,Im   : 6
+    }
+
 class Cell {
     constructor(alive = false, age = 0) {
         this.alive = alive 
         this.age = age
     }
-    transition(neighbors, randomicity = 0) {
+    transition(neighbors, randomness = RandomEventPer.Ik) {
 
         const aliveNeighbors =
             neighbors.filter(cell => cell.alive)
@@ -97,7 +107,7 @@ class Cell {
                 aliveNeighbors.length > 1 && aliveNeighbors.length <= 3 :
                 aliveNeighbors.length === 3
 
-    return new Cell(Random.floatInRange(1, 100) <= randomicity ? !alive : alive, +this.age + +alive)
+        return new Cell(Random.intInRange(1, 10 ** randomness) === 1 ? !alive : alive, +this.age + +alive)
     }
     show() {
         const opacity =
@@ -115,7 +125,7 @@ function nextState () {
         $(this).text("Next")
     }
     else {
-        grid = grid.transition()
+        grid = grid.transition(RandomEventPer.IO0k)
     }
 
     grid.draw()
@@ -126,4 +136,4 @@ function nextState () {
 //
 $("#startOrNext").on("click", nextState)
 
-setInterval(nextState, 500)
+setInterval(nextState, 1000)
