@@ -61,7 +61,7 @@ class Grid {
                 (position, cell) => new Cell(position in positions, cell.age + 1)
             )
     }
-    transition(randomness = RandomEventPer.Ik) {
+    transition(randomness = RandomEventPer.Iok) {
         return this
             .map2D(
                 ({ row, col }, cell) => 
@@ -75,6 +75,8 @@ class Grid {
         $("#grid")
             .css("height", this.rows * 2 + "px")
             .css("width", this.cols * 2 + "px")
+            .empty()
+            .append(gridHTML)
 
         return gridHTML
     }
@@ -123,7 +125,7 @@ function nextState () {
         $(this).text("Next")
     }
     else {
-        grid = grid.transition(RandomEventPer.IO0k)
+        grid = grid.transition(RandomEventPer.I0k)
     }
 
     grid.draw()
