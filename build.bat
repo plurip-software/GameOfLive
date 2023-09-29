@@ -29,7 +29,7 @@ xcopy /s ..\src\imgs\ imgs\ /i /d /y /e
 CALL uglifyjs ..\src\js\imports\* ..\src\js\index.js -c -m -o index.min.js
 
 @REM Minify CSS Then Into Dist
-CALL uglifycss css\style.css --output style.min.css
+CALL uglifycss ..\src\css\style.css --output style.min.css
 
 @REM Copy Index HTML File Into Dist
 copy ..\..\index.html index.html /y 
